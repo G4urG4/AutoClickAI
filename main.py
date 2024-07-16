@@ -5,11 +5,8 @@ import numpy as np
 import pandas as pd
 import random
 
-# import pyscreeze
-
 
 def valoresImg():
-    # Cargar la imagen
     image_path = "./principal_pantalla.jpg"
     image = Image.open(image_path)
     # Convertir la imagen a escala de grises (opcional)
@@ -71,7 +68,6 @@ a = [
 
 
 def moveMouse(nC):
-    # posInit = [715, 705]
     posInit = [715, 805]
     dismRecT = [40, 50]
     posX = posInit[0]
@@ -81,23 +77,10 @@ def moveMouse(nC):
         for j in range(len(a)):
             coorandX = random.randint(posX + 10, posX + dismRecT[0] - 15)
             coorandY = random.randint(posY + 10, posY + dismRecT[1] - 15)
-            # pyautogui.moveTo(coorandX, coorandY)
-            # time.sleep(1)
             dictValuesC.append([coorandX, coorandY])
             posY -= dismRecT[1]
         posX += dismRecT[0]
         posY = posInit[1]
-
-    # for j in range(len(a)):
-    #     for i in range(len(a[0])):
-    #         coorandX = random.randint(posX + 10, posX + dismRecT[0] - 15)
-    #         coorandY = random.randint(
-    #             posInit[1] + 10, posInit[1] + dismRecT[1] - 5 - 10
-    #         )
-    #         dictValuesC.append([coorandX, coorandY])
-    #         posX += dismRecT[0]
-    #     posInit[1] += dismRecT[1]
-    #     posX = posInit[0]
 
     nCmov = []
     iW_one = 0
@@ -116,9 +99,7 @@ def moveMouse(nC):
         iW_two += 1
 
     # pyautogui.click()
-    # Arrastrar el mouse a una nueva posición (x, y)
     # pyautogui.dragTo(300, 300)
-    # Tomar una captura de pantalla
     # screenshot = pyautogui.screenshot()
     # screenshot.save("screenshot.png")
 
