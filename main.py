@@ -77,32 +77,20 @@ def skipNotification(perC):
             valorInit = [[810, 1100], [630, 655]]
         else:
             valorInit = [[1092, 1100], [538, 548]]
-        tVrand = [
-            random.randint(valorInit[0][0], valorInit[0][1]),
-            random.randint(valorInit[1][0], valorInit[1][1]),
-        ]
     if valSpam == 2:
         valorInit = [[840, 1060], [660, 695]]
-        tVrand = [
-            random.randint(valorInit[0][0], valorInit[0][1]),
-            random.randint(valorInit[1][0], valorInit[1][1]),
-        ]
     if valSpam == 3:
         valorInit = [[845, 1060], [800, 835]]
-        tVrand = [
-            random.randint(valorInit[0][0], valorInit[0][1]),
-            random.randint(valorInit[1][0], valorInit[1][1]),
-        ]
     if valSpam == 4:
         if xorOpt == 0:
             valorInit = [[808, 1095], [655, 680]]
         else:
             valorInit = [[1092, 1100], [550, 558]]
 
-        tVrand = [
-            random.randint(valorInit[0][0], valorInit[0][1]),
-            random.randint(valorInit[1][0], valorInit[1][1]),
-        ]
+    tVrand = [
+        random.randint(valorInit[0][0], valorInit[0][1]),
+        random.randint(valorInit[1][0], valorInit[1][1]),
+    ]
     pyautogui.moveTo(tVrand[0], tVrand[1])
 
 
@@ -114,6 +102,7 @@ def moveMouse(nC):
         random.randint(posGreeInit[1][0], posGreeInit[1][1]),
     ]
     pyautogui.moveTo(tVrand[0], tVrand[1])
+    # pyautogui.click()
     # AllSquares
     posInit = [715, 805]
     dismRecT = [40, 50]
@@ -140,6 +129,7 @@ def moveMouse(nC):
     iW_two = 0
     while iW_two < nC:
         pyautogui.moveTo(dictValuesC[nCmov[iW_two]][0], dictValuesC[nCmov[iW_two]][1])
+        # pyautogui.click()
         print(
             f"i:{iW_two}({nCmov[iW_two]+1})->x:{dictValuesC[nCmov[iW_two]][0]},y:{dictValuesC[nCmov[iW_two]][1]}"
         )
