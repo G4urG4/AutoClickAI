@@ -9,13 +9,9 @@ import random
 def valoresImg():
     image_path = "./principal_pantalla.jpg"
     image = Image.open(image_path)
-    # Convertir la imagen a escala de grises (opcional)
     image = image.convert("L")
-    # Convertir la imagen a una matriz numpy
     image_array = np.array(image)
-    # Crear un DataFrame de pandas a partir de la matriz
     df = pd.DataFrame(image_array)
-    # Guardar el DataFrame en un archivo CSV
     csv_path = "./valorImg.csv"
     df.to_csv(csv_path, index=False, header=False)
     print(f"La imagen ha sido convertida y guardada en {csv_path}")
@@ -67,7 +63,58 @@ a = [
 ]
 
 
+def skipNotification(perC):
+    xorOpt = random.randint(0, 1)
+    tVrand = []
+    valSpam = -1
+    if len(perC) > 1:
+        valSpam = perC[1]
+    if len(perC) == 1:
+        valSpam = perC[0]
+
+    if valSpam == 1:
+        if xorOpt == 0:
+            valorInit = [[810, 1100], [630, 655]]
+        else:
+            valorInit = [[1092, 1100], [538, 548]]
+        tVrand = [
+            random.randint(valorInit[0][0], valorInit[0][1]),
+            random.randint(valorInit[1][0], valorInit[1][1]),
+        ]
+    if valSpam == 2:
+        valorInit = [[840, 1060], [660, 695]]
+        tVrand = [
+            random.randint(valorInit[0][0], valorInit[0][1]),
+            random.randint(valorInit[1][0], valorInit[1][1]),
+        ]
+    if valSpam == 3:
+        valorInit = [[845, 1060], [800, 835]]
+        tVrand = [
+            random.randint(valorInit[0][0], valorInit[0][1]),
+            random.randint(valorInit[1][0], valorInit[1][1]),
+        ]
+    if valSpam == 4:
+        if xorOpt == 0:
+            valorInit = [[808, 1095], [655, 680]]
+        else:
+            valorInit = [[1092, 1100], [550, 558]]
+
+        tVrand = [
+            random.randint(valorInit[0][0], valorInit[0][1]),
+            random.randint(valorInit[1][0], valorInit[1][1]),
+        ]
+    pyautogui.moveTo(tVrand[0], tVrand[1])
+
+
 def moveMouse(nC):
+    # SqrGree
+    posGreeInit = [[680, 710], [705, 850]]
+    tVrand = [
+        random.randint(posGreeInit[0][0], posGreeInit[0][1]),
+        random.randint(posGreeInit[1][0], posGreeInit[1][1]),
+    ]
+    pyautogui.moveTo(tVrand[0], tVrand[1])
+    # AllSquares
     posInit = [715, 805]
     dismRecT = [40, 50]
     posX = posInit[0]
@@ -85,18 +132,32 @@ def moveMouse(nC):
     nCmov = []
     iW_one = 0
     while iW_one < nC:
-        valorRC = random.randint(0, 31)
+        valorRC = random.randint(0, 35)
         if valorRC not in nCmov:
             nCmov.append(valorRC)
             iW_one += 1
+    nCmov.sort()
     iW_two = 0
     while iW_two < nC:
         pyautogui.moveTo(dictValuesC[nCmov[iW_two]][0], dictValuesC[nCmov[iW_two]][1])
         print(
             f"i:{iW_two}({nCmov[iW_two]+1})->x:{dictValuesC[nCmov[iW_two]][0]},y:{dictValuesC[nCmov[iW_two]][1]}"
         )
-        time.sleep(1)
+        # time.sleep(1)
         iW_two += 1
+
+
+def mixFunctionC():
+    percentageArr = [100, 0, 0, 0, 0]  # [moneda,SinFondos,HasGanado,CashPa,errInes]
+    moveMouse(24)
+    valorIndex = []
+    for i in range(len(percentageArr)):
+        if percentageArr[i] == 100:
+            valorIndex.append(i)
+    if len(valorIndex) > 1:
+        skipNotification(valorIndex)
+    if len(valorIndex) == 1 and valorIndex[0] != 0:
+        skipNotification(valorIndex)
 
     # pyautogui.click()
     # pyautogui.dragTo(300, 300)
@@ -104,5 +165,6 @@ def moveMouse(nC):
     # screenshot.save("screenshot.png")
 
 
-moveMouse(24)
+mixFunctionC()
+
 # valoresImg()
