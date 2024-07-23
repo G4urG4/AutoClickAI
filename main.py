@@ -35,6 +35,7 @@ def skipNotification(perC):
 
 
 def moveMouse(nC):
+    rowXcolumn = [12, 3]
     # SqrGree
     posGreeInit = [[680, 710], [705, 850]]
     tVrand = [
@@ -49,8 +50,8 @@ def moveMouse(nC):
     posX = posInit[0]
     posY = posInit[1]
     dictValuesC = []
-    for i in range(len(a[0])):
-        for j in range(len(a)):
+    for i in range(rowXcolumn[0]):
+        for j in range(rowXcolumn[1]):
             coorandX = random.randint(posX + 10, posX + dismRecT[0] - 15)
             coorandY = random.randint(posY + 10, posY + dismRecT[1] - 15)
             dictValuesC.append([coorandX, coorandY])
@@ -76,10 +77,11 @@ def moveMouse(nC):
         pyautogui.moveTo(dictValuesC[nCmov[iW_two]][0], dictValuesC[nCmov[iW_two]][1])
         # pyautogui.click()
         print(
-            f"i:{iW_two}({nCmov[iW_two]+1})->x:{dictValuesC[nCmov[iW_two]][0]},y:{dictValuesC[nCmov[iW_two]][1]}"
+            f"i:{iW_two}({nCmov[iW_two]+1})(t:{time_per_Move[iW_two]:.3f})->x:{dictValuesC[nCmov[iW_two]][0]},y:{dictValuesC[nCmov[iW_two]][1]}"
         )
         time.sleep(time_per_Move[iW_two])
         iW_two += 1
+    print(f"Tiempor promedio {sum(time_per_Move)}")
 
 
 def mixFunctionC():
