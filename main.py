@@ -76,6 +76,7 @@ def moveMouse(nC):
     while iW_two < nC:
         pyautogui.moveTo(dictValuesC[nCmov[iW_two]][0], dictValuesC[nCmov[iW_two]][1])
         # pyautogui.click()
+        # pyautogui.dragTo(300, 300)
         print(
             f"i:{iW_two}({nCmov[iW_two]+1})(t:{time_per_Move[iW_two]:.3f})->x:{dictValuesC[nCmov[iW_two]][0]},y:{dictValuesC[nCmov[iW_two]][1]}"
         )
@@ -86,7 +87,6 @@ def moveMouse(nC):
 
 def mixFunctionC():
     percentageArr = [100, 0, 0, 0, 0]  # [moneda,SinFondos,HasGanado,CashPa,errInes]
-    moveMouse(24)
     valorIndex = []
     for i in range(len(percentageArr)):
         if percentageArr[i] == 100:
@@ -95,11 +95,8 @@ def mixFunctionC():
         skipNotification(valorIndex)
     if len(valorIndex) == 1 and valorIndex[0] != 0:
         skipNotification(valorIndex)
-
-    # pyautogui.click()
-    # pyautogui.dragTo(300, 300)
-    # screenshot = pyautogui.screenshot()
-    # screenshot.save("screenshot.png")
+    if valorIndex[0] == 1 and len(valorIndex) == 1:
+        moveMouse(24)
 
 
 mixFunctionC()
