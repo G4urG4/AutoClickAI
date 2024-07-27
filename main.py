@@ -61,11 +61,16 @@ def moveMouse(nC):
 
     nCmov = []
     iW_one = 0
+    perFSqrt = [9, 17, 34]
+    probH = [8, 16, 33]
+    conI = 0
     while iW_one < nC:
-        valorRC = random.randint(0, 35)
+        valorRC = random.randint(0, perFSqrt[conI])
         if valorRC not in nCmov:
             nCmov.append(valorRC)
             iW_one += 1
+            if iW_one in probH:
+                conI += 1
     nCmov.sort()
     iW_two = 0
     average_time = 13
@@ -95,8 +100,10 @@ def mixFunctionC():
         skipNotification(valorIndex)
     if len(valorIndex) == 1 and valorIndex[0] != 0:
         skipNotification(valorIndex)
-    if valorIndex[0] == 1 and len(valorIndex) == 1:
+    if valorIndex[0] == 0 and len(valorIndex) == 1:
         moveMouse(24)
+        time.sleep(4)
+        pyautogui.moveTo(300, 400)
 
 
 mixFunctionC()
