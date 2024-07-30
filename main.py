@@ -34,7 +34,11 @@ def skipNotification(perC):
     pyautogui.moveTo(tVrand[0], tVrand[1])
 
 
-def moveMouse(nC):
+def moveMouse(arrDstr=[], posR_B=[]):
+    if len(arrDstr) == 0:
+        print("Ingresa una cantidad")
+        return exit
+    nC = sum(arrDstr)
     rowXcolumn = [12, 3]
     # SqrGree
     posGreeInit = [[680, 710], [705, 850]]
@@ -61,17 +65,21 @@ def moveMouse(nC):
 
     nCmov = []
     iW_one = 0
-    perFSqrt = [9, 17, 34]
-    probH = [8, 16, 33]
-    conI = 0
+    jW_one = 0
+    perFSqrt = [0] + list(map(lambda x: x - 1, posR_B))
+    conI = 1
     while iW_one < nC:
-        valorRC = random.randint(0, perFSqrt[conI])
+        valorRC = random.randint(perFSqrt[conI - 1], perFSqrt[conI])
         if valorRC not in nCmov:
             nCmov.append(valorRC)
             iW_one += 1
-            if iW_one in probH:
+            jW_one += 1
+            if jW_one == arrDstr[conI - 1]:
+                jW_one = 0
                 conI += 1
+                print(f"{list(map(lambda x: x+1,nCmov))}")
     nCmov.sort()
+    print(f"{list(map(lambda x: x+1,nCmov))}")
     iW_two = 0
     average_time = 13
     time_per_Move = [random.random() for _ in range(nC)]
@@ -101,7 +109,7 @@ def mixFunctionC():
     if len(valorIndex) == 1 and valorIndex[0] != 0:
         skipNotification(valorIndex)
     if valorIndex[0] == 0 and len(valorIndex) == 1:
-        moveMouse(24)
+        moveMouse([8, 8, 7], [12, 24, 36])
         time.sleep(4)
         pyautogui.moveTo(300, 400)
 
