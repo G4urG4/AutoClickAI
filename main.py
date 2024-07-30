@@ -39,6 +39,7 @@ def moveMouse(arrDstr=[], posR_B=[]):
         print("Ingresa una cantidad")
         return exit
     nC = sum(arrDstr)
+    print(nC)
     rowXcolumn = [12, 3]
     # SqrGree
     posGreeInit = [[680, 710], [705, 850]]
@@ -67,9 +68,10 @@ def moveMouse(arrDstr=[], posR_B=[]):
     iW_one = 0
     jW_one = 0
     perFSqrt = [0] + list(map(lambda x: x - 1, posR_B))
+    perFSqrt_T = [0, 12, 24, 36]
     conI = 1
     while iW_one < nC:
-        valorRC = random.randint(perFSqrt[conI - 1], perFSqrt[conI])
+        valorRC = random.randint(perFSqrt_T[conI - 1], perFSqrt[conI])
         if valorRC not in nCmov:
             nCmov.append(valorRC)
             iW_one += 1
@@ -77,9 +79,7 @@ def moveMouse(arrDstr=[], posR_B=[]):
             if jW_one == arrDstr[conI - 1]:
                 jW_one = 0
                 conI += 1
-                print(f"{list(map(lambda x: x+1,nCmov))}")
     nCmov.sort()
-    print(f"{list(map(lambda x: x+1,nCmov))}")
     iW_two = 0
     average_time = 13
     time_per_Move = [random.random() for _ in range(nC)]
@@ -110,8 +110,8 @@ def mixFunctionC():
         skipNotification(valorIndex)
     if valorIndex[0] == 0 and len(valorIndex) == 1:
         moveMouse([8, 8, 7], [12, 24, 36])
-        time.sleep(4)
-        pyautogui.moveTo(300, 400)
+        # time.sleep(4)
+        # pyautogui.moveTo(300, 400)
 
 
 mixFunctionC()
