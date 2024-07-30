@@ -42,7 +42,7 @@ def moveMouse(arrDstr=[], posR_B=[]):
     print(nC)
     rowXcolumn = [12, 3]
     # SqrGree
-    posGreeInit = [[680, 710], [705, 850]]
+    posGreeInit = [[680, 700], [705, 850]]
     tVrand = [
         random.randint(posGreeInit[0][0], posGreeInit[0][1]),
         random.randint(posGreeInit[1][0], posGreeInit[1][1]),
