@@ -32,6 +32,7 @@ def skipNotification(perC):
         random.randint(valorInit[1][0], valorInit[1][1]),
     ]
     pyautogui.moveTo(tVrand[0], tVrand[1])
+    # pyautogui.click()
 
 
 def moveMouse(arrDstr=[], posR_B=[]):
