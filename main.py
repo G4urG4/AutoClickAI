@@ -77,7 +77,9 @@ def moveMouse(arrDstr=[], posR_B=[]):
             if jW_one == arrDstr[conI - 1]:
                 jW_one = 0
                 conI += 1
+                print(f"{list(map(lambda x: x+1,nCmov))}")
     nCmov.sort()
+    print(f"{list(map(lambda x: x+1,nCmov))}")
     iW_two = 0
     average_time = 13
     time_per_Move = [random.random() for _ in range(nC)]
@@ -87,12 +89,13 @@ def moveMouse(arrDstr=[], posR_B=[]):
     while iW_two < nC:
         pyautogui.moveTo(dictValuesC[nCmov[iW_two]][0], dictValuesC[nCmov[iW_two]][1])
         # pyautogui.click()
+        # pyautogui.dragTo(300, 300)
         print(
             f"i:{iW_two}({nCmov[iW_two]+1})(t:{time_per_Move[iW_two]:.3f})->x:{dictValuesC[nCmov[iW_two]][0]},y:{dictValuesC[nCmov[iW_two]][1]}"
         )
         time.sleep(time_per_Move[iW_two])
         iW_two += 1
-    print(f"Tiempo promedio {sum(time_per_Move)}")
+    print(f"Tiempor promedio {sum(time_per_Move)}")
 
 
 def mixFunctionC():
